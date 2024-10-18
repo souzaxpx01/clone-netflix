@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Clone - Netflix</title>
+    <link rel="stylesheet" type="text/css" href="./src/styles/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header>
+        <!-- Parte de navegação do menu / Cabeçalho do site-->
+
+        <nav>
+
+            <img src="./src/img/logo escrito netflix.png" class="logo-menu">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Séries</a></li>
+                <li><a href="#">Filmes</a></li>
+                <li><a href="#">Bombando</a></li>
+                <li><a href="#">Minha lista</a></li>
+            </ul>
+
+            <div class="menu_botoes">
+                <ul>
+                    <li><i class="fa fa-search" aria-hidden="true" style="font-size:20px"></i></li>
+                    <li><i class="fa fa-bell" aria-hidden="true" style="font-size:20px"></i></i></li>
+                    <li class="botao_drop">
+                        <img src="./src/img/icone-perfil.png" class="icone_perfil">
+                        <i class="fa fa-sort-desc" aria-hidden="true" style="font-size:20px"></i>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="banner">
+        <div class="banner_logo">
+            <img src="./src/img/logo N .png" alt="logo N">
+            <h4>FILME</h4>
+        </div>
+        <h2>ghost matança</h2>
+        <p>
+            Sempre mostrando muita lealdade aos seus companheiros, Ghost também exibiu uma personalidade feroz em Modern
+            Warfare 2, sendo um soldado determinado e extremamente letal.
+        </p>
+        <button class="banner_assistir">
+            assistir
+        </button>
+        <button class="banner_mais_informacoes">
+            mais informações
+        </button>
+    </div>
+    <main>
+
+        <section>
+            <div class="minha_lista">
+                <p>Minha lista</p>
+                <ul>
+                    <li>
+                        <img src="./src/img/one-piece.jpeg">
+                    </li>
+                    <li>
+                        <img src="./src/img/de.jpeg">
+                    </li>
+                    <li>
+                        <img src="./src/img/one-piece.jpeg">
+                    </li>
+                    <li>
+                        <img src="./src/img/de.jpeg">
+                    </li>
+                    <li>
+                        <img src="./src/img/one-piece.jpeg">
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h1>Animes que estão bombando</h1>
+            <div class="container">
+                <button class="arrow-left control" aria-label="Previous image">◀</button>
+                <button class="arrow-right control" aria-label="Next Image">▶</button>
+                <div class="gallery-wrapper">
+                    <div class="gallery">
+                        <img src="./src/img/baki.jpeg" alt="Beach Image" class="item current-item">
+                        <img src="./src/img/dragon-ball-z.jpeg" alt="Animal Image" class="item current-item">
+                        <img src="./src/img/one-piece.jpeg" alt="Street Image" class="item current-item">
+                        <img src="./src/img/jujutsu-kaisen.jpeg2.jpg" alt="Zoo Image" class="item current-item">
+                        <img src="./src/img/naruto.jpeg" alt="Model Image" class="item current-item">
+                        <img src="./src/img/demon-slayer.jpeg" alt="Beach Image" class="item current-item">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Rodapé do site -->
+    </footer>
+</body>
+<script>
+
+    const controls = document.querySelectorAll(".control");
+    let currentItem = 0;
+    const items = document.querySelectorAll(".item");
+    const maxItems = items.length;
+
+    controls.forEach((control) => {
+        control.addEventListener("click", (e) => {
+            isLeft = e.target.classList.contains("arrow-left");
+
+            if (isLeft) {
+                currentItem -= 1;
+            } else {
+                currentItem += 1;
+            }
+
+            if (currentItem >= maxItems) {
+                currentItem = 0;
+            }
+
+            if (currentItem < 0) {
+                currentItem = maxItems - 1;
+            }
+            console.log('item ' + currentItem)
+
+            items.forEach((item) => item.classList.remove("current-item"));
+
+            items[currentItem].scrollIntoView({
+                behavior: "smooth",
+                inline: "center"
+            });
+
+            items[currentItem].classList.add("current-item");
+        });
+    });
+
+</script>
+
+</html>
